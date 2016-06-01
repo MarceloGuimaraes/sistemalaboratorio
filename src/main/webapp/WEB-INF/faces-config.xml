@@ -104,8 +104,8 @@
             <from-outcome>alterarsenha</from-outcome>
             <to-view-id>/pages/adm/senha.xhtml</to-view-id>
         </navigation-case>
-    </navigation-rule>	
-    
+    </navigation-rule>
+
     <navigation-rule>
 	    <from-view-id>/pages/adm/formcliente.xhtml</from-view-id> 
 	    <navigation-case>
@@ -241,7 +241,12 @@
         <converter-class>com.util.converter.MicrorganismoConverter</converter-class>
     </converter>
 
+    <converter>
+        <converter-id>LaudoConverter</converter-id>
+        <converter-class>com.util.converter.LaudoConverter</converter-class>
+    </converter>
+
 	<lifecycle>
 		<phase-listener>com.filter.AuthorizationListener</phase-listener>
-	</lifecycle>  
+	</lifecycle>
 </faces-config>

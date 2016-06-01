@@ -199,9 +199,16 @@ public class CargaMB extends BaseMB implements Serializable {
 
 			List<String> condicoes = new ArrayList<String>();
 			
-			condicoes.add("Íntegra/ Violada/ Parcialmente consumida");
-			condicoes.add("Temperatura apropriada/ inapropriada");
-			condicoes.add("Quantidade suficiente/ insuficiente");
+			//condicoes.add("Íntegra/ Violada/ Parcialmente consumida");
+			//condicoes.add("Temperatura apropriada/ inapropriada");
+			//condicoes.add("Quantidade suficiente/ insuficiente");
+			condicoes.add("Íntegra");
+			condicoes.add("Violada");
+			condicoes.add("Parcialmente consumida");
+			condicoes.add("Temperatura apropriada");
+			condicoes.add("Temperatura inapropriada");
+			condicoes.add("Quantidade suficiente");
+			condicoes.add("Quantidade insuficiente");
 			condicoes.add("Outros");
 
 			for (String condicao : condicoes) {

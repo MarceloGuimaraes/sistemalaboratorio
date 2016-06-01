@@ -70,10 +70,9 @@
 	<bean id="UsuarioDaoImpl" class="com.dao.impl.UsuarioDaoImpl"
 		parent="Dao">
 	</bean>
-	
+
 	<bean id="LaudoDaoImpl" class="com.dao.impl.LaudoDaoImpl"
 		  parent="Dao">
 	</bean>
-
 
 </beans>

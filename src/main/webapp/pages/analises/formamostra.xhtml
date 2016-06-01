@@ -420,10 +420,8 @@
 							<h:selectOneRadio id="antissepsia"
 								disabled="#{SessaoDoUsuario.visualizar or SessaoDoUsuario.analisar}"
 								value="#{amostraController.amostra.antissepsia}">
-								<f:selectItem itemLabel="#{msgs['padrao.label.sim']}"
-											  itemValue="#{true}" />
-								<f:selectItem itemLabel="#{msgs['padrao.label.nao']}"
-											  itemValue="#{false}" />
+								<f:selectItem itemLabel="#{msgs['padrao.label.sim']}" itemValue="#{true}" />
+								<f:selectItem itemLabel="#{msgs['padrao.label.nao']}" itemValue="#{false}" />
 								<p:ajax event="change" update="tbmicrorganismos" />
 							</h:selectOneRadio>
 						</h:column>
@@ -464,15 +462,13 @@
 							<h:outputText value="Sem antissepsia"
 								rendered="#{amostraController.tipoAnaliseManipulador and  not amostraController.amostra.antissepsia}" />
 							<h:outputText value="Com antissepsia. Forma : "
-								rendered="#{amostraController.tipoAnaliseManipulador and   amostraController.amostra.antissepsia}" />
+								rendered="#{amostraController.tipoAnaliseManipulador and amostraController.amostra.antissepsia}" />
 
 							<p:inputText id="antissepsiaDesc"
 										 value="#{amostraController.amostra.antissepsiaDesc}"
 										 disabled="#{SessaoDoUsuario.visualizar or SessaoDoUsuario.analisar}"
-										 rendered="#{amostraController.tipoAnaliseManipulador and   amostraController.amostra.antissepsia}"
-										 style="width:450px">
-							</p:inputText>
-
+										 rendered="#{amostraController.tipoAnaliseManipulador and amostraController.amostra.antissepsia}"
+										 style="width:450px"/>
 						</f:facet>
 
 						<p:column
@@ -523,7 +519,8 @@
 											 autoUpdate="true" >
 											<f:setPropertyActionListener target="#{amostraController.resultadodelet}" value="#{resultado}" />
 							</p:commandButton>
-							<p:commandButton id="ExcluirDialogButton"
+							<p:commandButton rendered="#{!SessaoDoUsuario.visualizar and !SessaoDoUsuario.analisar}"
+											 id="ExcluirDialogButton"
 											 value="Excluir" icon="ui-icon-cancel"
 											 onclick="popExcluir.show();"
 											 styleClass="btn  btn-small"  style="width: 80px; "
@@ -656,9 +653,9 @@
 						</h:column>
 						<h:column>
 							<p:inputTextarea id="laudoTextId" rows="5" cols="30"
-								autoResize="false"
-								value="#{amostraController.amostra.observacao}"
-								disabled="#{!SessaoDoUsuario.analisar}">
+											 autoResize="false"
+											 value="#{amostraController.amostra.observacao}"
+											 disabled="#{!SessaoDoUsuario.analisar}" >
 							</p:inputTextarea>
 						</h:column>
 						<h:column />
@@ -672,10 +669,12 @@
 			<br />
 
 			<h:panelGrid columns="3" cellspacing="10">
-				<p:commandButton id="salvar" action="#{amostraController.salvar}"
-					value="#{msgs['padrao.botao.salvar']}"
-					disable="#{!SessaoDoUsuario.editar}"
-					rendered="#{!SessaoDoUsuario.visualizar}" />
+				<p:commandButton id="salvar"
+								 action="#{amostraController.salvar}"
+								 value="#{msgs['padrao.botao.salvar']}"
+								 disable="#{!SessaoDoUsuario.editar}"
+								 rendered="#{!SessaoDoUsuario.visualizar}"
+								 immediate="#{SessaoDoUsuario.analisar}"/>
 
 				<p:commandButton id="voltar" action="#{amostraController.voltar}"
 					value="#{msgs['padrao.botao.voltar']}" async="true" process="@this" />

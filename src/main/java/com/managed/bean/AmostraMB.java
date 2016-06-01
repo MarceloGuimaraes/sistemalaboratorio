@@ -202,12 +202,9 @@ public class AmostraMB extends BaseMB implements Serializable {
 		if(laudotmp != null){
 			amostra.setLaudo(laudotmp.getNome());
 		}
-		System.out.println(amostra.getIdAmostra());
-
 	}
 
 	public void onTipoAnaliseChange() {
-
 		if(getAmostra().getIdAmostra() == 0) {
 			Amostra amostranew = new Amostra();
 			amostranew.setIdAmostra(getAmostra().getIdAmostra());
@@ -230,6 +227,7 @@ public class AmostraMB extends BaseMB implements Serializable {
 	public void onAnaliseComparativaChange() {
 		if (getAmostra().getComparativa()) {
 			populaListaComparativa();
+			getAmostra().setAntissepsia(false);
 		} else {
 			setResultadoCompList(new ArrayList<Resultado>());
 		}
@@ -362,45 +360,38 @@ public class AmostraMB extends BaseMB implements Serializable {
 	}
 
 	private boolean isTipoAnaliseNull() {
-		return (getAmostra().getTipoAnalise() == null || getAmostra()
-				.getTipoAnalise() == TipoAnalise.SELECIONEAQUI);
+		return (getAmostra().getTipoAnalise() == null ||
+				getAmostra().getTipoAnalise() == TipoAnalise.SELECIONEAQUI);
 	}
 
 	public boolean isTipoAnaliseAlimento() {
-		return !isTipoAnaliseNull()
-				&& getAmostra().getTipoAnalise() == TipoAnalise.ALIMENTO;
+		return !isTipoAnaliseNull() && getAmostra().getTipoAnalise() == TipoAnalise.ALIMENTO;
 	}
 
 	public boolean isTipoAnaliseManipulador() {
-		return !isTipoAnaliseNull()
-				&& (getAmostra().getTipoAnalise() == TipoAnalise.MANIPULADOR);
+		return !isTipoAnaliseNull()	&& (getAmostra().getTipoAnalise() == TipoAnalise.MANIPULADOR);
 	}
 
 	public boolean isTipoAnaliseSuperficie() {
-		return !isTipoAnaliseNull()
-				&& (getAmostra().getTipoAnalise() == TipoAnalise.SUPERFICIE);
+		return !isTipoAnaliseNull() && (getAmostra().getTipoAnalise() == TipoAnalise.SUPERFICIE);
 	}
 
 	public boolean isTipoAnaliseAgua() {
-		return !isTipoAnaliseNull()
-				&& (getAmostra().getTipoAnalise() == TipoAnalise.AGUA);
+		return !isTipoAnaliseNull() && (getAmostra().getTipoAnalise() == TipoAnalise.AGUA);
 	}
 
 	public boolean isTipoAnaliseAguaMineral() {
-		return !isTipoAnaliseNull()
-				&& (getAmostra().getTipoAnalise() == TipoAnalise.AGUAMINERAL);
+		return !isTipoAnaliseNull() && (getAmostra().getTipoAnalise() == TipoAnalise.AGUAMINERAL);
 	}
 
 	public boolean isTipoAnaliseAr() {
-		return !isTipoAnaliseNull()
-				&& (getAmostra().getTipoAnalise() == TipoAnalise.AR);
+		return !isTipoAnaliseNull() && (getAmostra().getTipoAnalise() == TipoAnalise.AR);
 	}
 
 	public boolean isMotivoAnaliseOutros() {
-		return isTipoAnaliseAlimento()
-				&& (getAmostra().getMotivoAnalise() != null && "outros"
-						.equals(getAmostra().getMotivoAnalise().getNome()
-								.toString().toLowerCase()));
+		return isTipoAnaliseAlimento() &&
+				(getAmostra().getMotivoAnalise() != null &&
+				 "outros".equals(getAmostra().getMotivoAnalise().getNome().toString().toLowerCase()));
 	}
 
 	public boolean isCondicaoAmostraOutros() {

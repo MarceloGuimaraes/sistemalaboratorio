@@ -64,8 +64,7 @@ public class CondicaoAmostra implements Serializable {
 		int result = 1;
 		result = prime
 				* result
-				+ ((idCondicaoAmostra == null) ? 0 : idCondicaoAmostra
-						.hashCode());
+				+ ((idCondicaoAmostra == null) ? 0 : idCondicaoAmostra.hashCode());
 		return result;
 	}
 

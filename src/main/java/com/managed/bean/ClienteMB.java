@@ -193,4 +193,16 @@ public class ClienteMB extends BaseMB implements Serializable {
 		this.solicitacaoService = solicitacaoService;
 	}
 
+	public void tipoPessoaChange(){
+		//** Se "Tipo pessoa" for "Juridica(0)" e "Inscricao" for "Isento(2)" : setar "Inscricao" como "Municipal(0)"
+		if(getCliente().getTipopessoa() != null && getCliente().getTipopessoa().equals("0")){
+			if (cliente.getTipoinscricao()!=null && cliente.getTipoinscricao().equals("2")){
+				cliente.setTipoinscricao("0");
+			}
+		}//** Se "Tipo pessoa" for "Fisica(1)" : setar "Inscricao" como "Isento(2)"
+		else if(getCliente().getTipopessoa() != null && getCliente().getTipopessoa().equals("1")){
+			cliente.setTipoinscricao("2");
+		}
+	}
+
 }

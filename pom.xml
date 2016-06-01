@@ -96,13 +96,13 @@
 		<dependency>
 			<groupId>com.sun.faces</groupId>
 			<artifactId>jsf-api</artifactId>
-			<version>2.1.6</version>
+			<version>2.2.12</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.sun.faces</groupId>
 			<artifactId>jsf-impl</artifactId>
-			<version>2.1.6</version>
+			<version>2.2.12</version>
 		</dependency>
 
 		<dependency>
@@ -110,26 +110,32 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.0.1</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<!-- Primefaces library -->
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
-			<version>3.3</version>
+			<version>5.2</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.primefaces.themes</groupId>
-			<artifactId>all-themes</artifactId>
+			<artifactId>south-street</artifactId>
 			<version>1.0.10</version>
 		</dependency>
+
+		<!-- <dependency> 
+		<groupId>org.primefaces.themes</groupId>
+		 <artifactId>all-themes</artifactId> 
+			<version>1.0.10</version> 
+			</dependency> -->
 
 		<!-- Hibernate library -->
 		<dependency>

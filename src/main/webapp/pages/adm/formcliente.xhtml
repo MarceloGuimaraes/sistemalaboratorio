@@ -92,7 +92,7 @@
 								<f:selectItem
 									itemLabel="#{msgs['padrao.label.tipo.pessoa.fisica']}"
 									itemValue="1" />
-								<p:ajax event="change" update="lbCnpj, fldCnpj" />
+								<p:ajax event="change" listener="#{clienteController.tipoPessoaChange}" update="lbCnpj, fldCnpj, lbInscricao, fldInscricao, tipoinscricao" render="fldInscricao" />
 							</h:selectOneRadio>
 						</p:column>
 
