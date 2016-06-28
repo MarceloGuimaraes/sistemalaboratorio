@@ -17,8 +17,9 @@
 					<f:facet name="header">
 						<h:outputText for="globalFilter" value="Filtrar:" />
 						<p:inputText id="globalFilter"
-							onkeyup="dataTableLog.filter()"
-							style="width:150px;margin-left:10px" placeholder="Enter keyword" />
+							onkeyup="PF('dataTableLog').filter()"
+							style="width:150px;margin-left:10px"
+									 placeholder="Enter keyword" />
 					</f:facet>
 
 					<p:column

@@ -39,16 +39,15 @@
 					rows="10" style="width: 100%;"
 					emptyMessage="#{msgs['padrao.registro.nenhum.encontrado']}"
 					filteredValue="#{microrganismoController.itemPadraoListFiltered}">
-			
+
 					<f:facet name="header">
-
-						<h:outputText for="globalFilter" value="Filtrar:" />
-
-
-						<p:inputText id="globalFilter"
-							onkeyup="dataTableMicrorganismos.filter()"
-							style="width:150px;margin-left:10px" placeholder="Enter keyword" />
-
+						<p:outputPanel>
+							<h:outputText value="#{msgs['padrao.label.filtrar']}#{msgs['padrao.label.doispontos']}" />
+							<p:inputText id="globalFilter"
+										 onkeyup="PF('dataTableMicrorganismos').filter()"
+										 style="width:150px;margin-left:10px"
+										 placeholder="Enter keyword"/>
+						</p:outputPanel>
 					</f:facet>
 			
 					<p:column filterBy="#{itemPadrao.codigoLegislacao}"

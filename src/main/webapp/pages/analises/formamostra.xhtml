@@ -504,14 +504,8 @@
 							</p:cellEditor>
 						</p:column>
 
-
 						<p:column>
 							<p:rowEditor rendered="#{SessaoDoUsuario.analisar}" />
-
-							<h:commandButton rendered="#{!SessaoDoUsuario.visualizar and !SessaoDoUsuario.analisar}"
-											 value="Delete"
-											 action="#{amostraController.deletarMicrorganismo(resultado)}"
-											 update="tbmicrorganismos" />
 							<p:commandButton rendered="#{!SessaoDoUsuario.visualizar and !SessaoDoUsuario.analisar}"
 											 action="#{amostraController.deletarMicrorganismo}"
 											 icon="ui-icon-cancel"
@@ -519,26 +513,9 @@
 											 autoUpdate="true" >
 											<f:setPropertyActionListener target="#{amostraController.resultadodelet}" value="#{resultado}" />
 							</p:commandButton>
-							<p:commandButton rendered="#{!SessaoDoUsuario.visualizar and !SessaoDoUsuario.analisar}"
-											 id="ExcluirDialogButton"
-											 value="Excluir" icon="ui-icon-cancel"
-											 onclick="popExcluir.show();"
-											 styleClass="btn  btn-small"  style="width: 80px; "
-											 update="tbmicrorganismos"
-											 actionListener="#{amostraController.deletarMicrorganismo(resultado)}">
-											<f:setPropertyActionListener target="#{amostraController.resultadodelet}" value="#{resultado}" />
-							</p:commandButton>
-							<p:dialog id="modalDialogExcluir" header="Excluir Solicitação" widgetVar="popExcluir" modal="true"  width="400" height="350" >
-								<h:form>
-									<h:outputText value="Microorganismo excluido." />
-									<br/>
-									<p:commandButton  id="excluirButton"  value="Confirmar" action="#{amostraController.faznada}"  oncomplete="popAprovar.hide()"   styleClass="btn  btn-small"  update="@all"  />
-								</h:form>
-							</p:dialog>
 						</p:column>
 
 					</p:dataTable>
-
 
 					<br />
 
@@ -674,7 +651,7 @@
 								 value="#{msgs['padrao.botao.salvar']}"
 								 disable="#{!SessaoDoUsuario.editar}"
 								 rendered="#{!SessaoDoUsuario.visualizar}"
-								 immediate="#{SessaoDoUsuario.analisar}"/>
+								 />
 
 				<p:commandButton id="voltar" action="#{amostraController.voltar}"
 					value="#{msgs['padrao.botao.voltar']}" async="true" process="@this" />

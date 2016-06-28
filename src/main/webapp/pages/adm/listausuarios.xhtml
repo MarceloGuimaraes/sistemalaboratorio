@@ -38,14 +38,13 @@
 					filteredValue="#{userController.userListFiltered}">
 
 					<f:facet name="header">
-
-						<h:outputText for="globalFilter" value="Filtrar:" />
-
-
-						<p:inputText id="globalFilter"
-							onkeyup="dataTableUsuarios.filter()"
-							style="width:150px;margin-left:10px" placeholder="Enter keyword" />
-
+						<p:outputPanel>
+							<h:outputText value="#{msgs['padrao.label.filtrar']}#{msgs['padrao.label.doispontos']}" />
+							<p:inputText id="globalFilter"
+										 onkeyup="PF('dataTableUsuarios').filter()"
+										 style="width:150px;margin-left:10px"
+										 placeholder="Enter keyword"/>
+						</p:outputPanel>
 					</f:facet>
 
 					<p:column filterBy="#{usuario.nome}"

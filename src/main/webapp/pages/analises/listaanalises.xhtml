@@ -33,14 +33,13 @@
 					filteredValue="#{solicitacaoController.solicitacaoListFiltered}">
 
 					<f:facet name="header">
-
-						<h:outputText for="globalFilter"
-							value="#{msgs['padrao.label.filtrar']}#{msgs['padrao.label.doispontos']}" />
-
-						<p:inputText id="globalFilter"
-							onkeyup="dataTableSolicitacoes.filter()"
-							style="width:150px;margin-left:10px" placeholder="Enter keyword" />
-
+						<p:outputPanel>
+							<h:outputText value="#{msgs['padrao.label.filtrar']}#{msgs['padrao.label.doispontos']}" />
+							<p:inputText id="globalFilter"
+										 onkeyup="PF('dataTableSolicitacoes').filter()"
+										 style="width:150px;margin-left:10px"
+										 placeholder="Enter keyword"/>
+						</p:outputPanel>
 					</f:facet>
 
 					<p:column filterBy="#{solicitacao.strNumero}"
@@ -62,17 +61,17 @@
 						<h:outputText value="#{solicitacao.cliente}" />
 					</p:column>
 
-
-
 					<p:column filterBy="#{solicitacao.dataSolicitacaoFormat}"
 							  headerText="#{msgs['solicitacao.form.label.data']}"
 							  filterMatchMode="contains"
-							  filterStyle="display:none; visibility:hidden;"
-							>
+							  filterStyle="display:none; visibility:hidden;" >
 						<h:outputText value="#{solicitacao.dataSolicitacaoFormat}" />
 					</p:column>
 
-					<p:column filterBy="#{solicitacao.dataSolicitacao}"
+
+
+					<p:column rendered="false"
+							filterBy="#{solicitacao.dataSolicitacao}"
 							  headerText="#{msgs['solicitacao.form.label.prazo']}"
 							  filterMatchMode="contains"
 							  filterStyle="display:none; visibility:hidden;">
@@ -82,7 +81,12 @@
 											   timeZone="#{msgs['sistema.formato.timezone']}" />
 						</h:outputText>
 					</p:column>
-
+					<p:column filterBy="#{solicitacao.dataPrazoFormat}"
+							  headerText="#{msgs['solicitacao.form.label.prazo']}"
+							  filterMatchMode="contains"
+							  filterStyle="display:none; visibility:hidden;" >
+						<h:outputText value="#{solicitacao.dataPrazoFormat}" />
+					</p:column>
 
 
 					<p:column filterBy="#{solicitacao.status}"

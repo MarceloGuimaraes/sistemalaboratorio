@@ -36,13 +36,13 @@
 					filteredValue="#{clienteController.clienteListFiltered}">
 
 					<f:facet name="header">
-
-							<h:outputText for="globalFilter" value="Filtrar:" />
-
+						<p:outputPanel>
+							<h:outputText value="#{msgs['padrao.label.filtrar']}#{msgs['padrao.label.doispontos']}" />
 							<p:inputText id="globalFilter"
-								onkeyup="dataTableClientes.filter()"
-								style="width:150px;margin-left:10px" placeholder="Enter keyword" />
-
+										 onkeyup="PF('dataTableClientes').filter()"
+										 style="width:150px;margin-left:10px"
+										 placeholder="Enter keyword"/>
+						</p:outputPanel>
 					</f:facet>
 
 					<p:column filterBy="#{cliente.nome}"
@@ -70,16 +70,16 @@
 					</p:column>
 
 					<p:column filterBy="#{cliente.ativo}"
-						headerText="#{msgs['padrao.consulta.tabela.colunaStatus']}"
-						filterMatchMode="equals"
-						filterStyle="display:none; visibility:hidden;">
+							  headerText="#{msgs['padrao.consulta.tabela.colunaStatus']}"
+							  filterMatchMode="exact"
+							  filterStyle="display:none; visibility:hidden;">
 						<f:facet name="filter">
-							<p:selectOneButton onchange="dataTableClientes.filter()">
+							<p:selectOneMenu onchange="PF('dataTableClientes').filter()" >
 								<f:converter converterId="javax.faces.Boolean" />
-								<f:selectItem itemLabel="Todos" itemValue="" />
+								<f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
 								<f:selectItem itemLabel="Ativo" itemValue="true" />
 								<f:selectItem itemLabel="Desativado" itemValue="false" />
-							</p:selectOneButton>
+							</p:selectOneMenu>
 						</f:facet>
 						<h:outputText value="#{cliente.ativo ? 'Ativo': 'Desativado'}" />
 					</p:column>

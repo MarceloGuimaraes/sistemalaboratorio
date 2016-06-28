@@ -230,13 +230,21 @@ public class Solicitacao implements Serializable, ILoggable {
 		} else{
 			return  null;
 		}
-
 	}
 
 	public String getDataLiberacaoFormat(){
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		if(dataLiberacao != null) {
 			return dateFormat.format(dataLiberacao);
+		} else{
+			return  null;
+		}
+	}
+
+	public String getDataPrazoFormat(){
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		if(prazo != null) {
+			return dateFormat.format(prazo);
 		} else{
 			return  null;
 		}
