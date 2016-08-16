@@ -270,15 +270,15 @@ public class AmostraMB extends BaseMB implements Serializable {
 				Resultado resultado = new Resultado();
 				resultado.setCodigoLegislacao(itemPadrao.getCodigoLegislacao());
 				resultado.setMicrorganismo(itemPadrao.getMicrorganismo());
-				resultado.setToleranciaIndicativaComp(itemPadrao.getToleranciaIndicativa());
-				resultado.setToleranciaLimInfComp(itemPadrao.getToleranciaLimInf());
-				resultado.setToleranciaLimSupComp(itemPadrao.getToleranciaLimSup());
-				resultado.setToleranciaRepresentivaCComp(itemPadrao.getToleranciaRepresentivaC());
-				resultado.setToleranciaRepresentivaNComp(itemPadrao.getToleranciaRepresentivaN());
+//				resultado.setToleranciaIndicativaComp(itemPadrao.getToleranciaIndicativa());
+//				resultado.setToleranciaLimInfComp(itemPadrao.getToleranciaLimInf());
+//				resultado.setToleranciaLimSupComp(itemPadrao.getToleranciaLimSup());
+//				resultado.setToleranciaRepresentivaCComp(itemPadrao.getToleranciaRepresentivaC());
+//				resultado.setToleranciaRepresentivaNComp(itemPadrao.getToleranciaRepresentivaN());
 				resultado.setPatrao(true);
 
 				resultado.setUnidadeMedida(itemPadrao.getUnidadeMedida());
-				resultado.setLimiteTolerancia(itemPadrao.getLimiteTolerancia());
+//				resultado.setLimiteTolerancia(itemPadrao.getLimiteTolerancia());
 
 				getResultadoList().add(resultado);
 			}

@@ -248,5 +248,6 @@
 
 	<lifecycle>
 		<phase-listener>com.filter.AuthorizationListener</phase-listener>
+	<phase-listener>com.filter.PhaseTracker</phase-listener>
 	</lifecycle>
 </faces-config>

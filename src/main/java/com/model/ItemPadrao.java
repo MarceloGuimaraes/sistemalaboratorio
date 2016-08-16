@@ -28,20 +28,20 @@ public class ItemPadrao implements Serializable {
 	@Column(name = "codigolegislacao")
 	private String codigoLegislacao;
 
-	@Column(name = "toleranciaindicativa")
-	private String toleranciaIndicativa;
+//	@Column(name = "toleranciaindicativa")
+//	private String toleranciaIndicativa;
 	
-	@Column(name = "toleranciarepresentativa_n")
-	private String toleranciaRepresentivaN;
+//	@Column(name = "toleranciarepresentativa_n")
+//	private String toleranciaRepresentivaN;
 
-	@Column(name = "toleranciarepresentativa_c")
-	private String toleranciaRepresentivaC;	
+//	@Column(name = "toleranciarepresentativa_c")
+//	private String toleranciaRepresentivaC;
 	
-	@Column(name = "tolerancialiminf")
-	private String toleranciaLimInf;
+//	@Column(name = "tolerancialiminf")
+//	private String toleranciaLimInf;
 
-	@Column(name = "tolerancialimsup")
-	private String toleranciaLimSup;
+//	@Column(name = "tolerancialimsup")
+//	private String toleranciaLimSup;
 
 	@Column(name = "tipoanalise")
 	private TipoAnalise tipoAnalise;
@@ -61,10 +61,17 @@ public class ItemPadrao implements Serializable {
 	@Column(name = "unidademedida")
 	private String unidadeMedida;
 
-	@Column(name = "limitetolerancia")
-	private String limiteTolerancia;
+//	@Column(name = "limitetolerancia")
+//	private String limiteTolerancia;
+
+	@Column(name = "referencia")
+	private String referencia;
 
 	public ItemPadrao() {
+	}
+
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
 	}
 
 	public Integer getIdItemPadrao() {
@@ -75,14 +82,6 @@ public class ItemPadrao implements Serializable {
 		this.idItemPadrao = idItemPadrao;
 	}
 
-	public Padrao getPadrao() {
-		return padrao;
-	}
-
-	public void setPadrao(Padrao padrao) {
-		this.padrao = padrao;
-	}
-
 	public String getCodigoLegislacao() {
 		return codigoLegislacao;
 	}
@@ -91,52 +90,20 @@ public class ItemPadrao implements Serializable {
 		this.codigoLegislacao = codigoLegislacao;
 	}
 
-	public String getToleranciaIndicativa() {
-		return toleranciaIndicativa;
-	}
-
-	public void setToleranciaIndicativa(String toleranciaIndicativa) {
-		this.toleranciaIndicativa = toleranciaIndicativa;
-	}
-
-	public String getToleranciaRepresentivaN() {
-		return toleranciaRepresentivaN;
-	}
-
-	public void setToleranciaRepresentivaN(String toleranciaRepresentivaN) {
-		this.toleranciaRepresentivaN = toleranciaRepresentivaN;
-	}
-
-	public String getToleranciaRepresentivaC() {
-		return toleranciaRepresentivaC;
-	}
-
-	public void setToleranciaRepresentivaC(String toleranciaRepresentivaC) {
-		this.toleranciaRepresentivaC = toleranciaRepresentivaC;
-	}
-
-	public String getToleranciaLimInf() {
-		return toleranciaLimInf;
-	}
-
-	public void setToleranciaLimInf(String toleranciaLimInf) {
-		this.toleranciaLimInf = toleranciaLimInf;
-	}
-
-	public String getToleranciaLimSup() {
-		return toleranciaLimSup;
-	}
-
-	public void setToleranciaLimSup(String toleranciaLimSup) {
-		this.toleranciaLimSup = toleranciaLimSup;
-	}
-
 	public TipoAnalise getTipoAnalise() {
 		return tipoAnalise;
 	}
 
 	public void setTipoAnalise(TipoAnalise tipoAnalise) {
 		this.tipoAnalise = tipoAnalise;
+	}
+
+	public Padrao getPadrao() {
+		return padrao;
+	}
+
+	public void setPadrao(Padrao padrao) {
+		this.padrao = padrao;
 	}
 
 	public Microrganismo getMicrorganismo() {
@@ -163,12 +130,12 @@ public class ItemPadrao implements Serializable {
 		this.unidadeMedida = unidadeMedida;
 	}
 
-	public String getLimiteTolerancia() {
-		return limiteTolerancia;
+	public String getReferencia() {
+		return referencia;
 	}
 
-	public void setLimiteTolerancia(String limiteTolerancia) {
-		this.limiteTolerancia = limiteTolerancia;
+	public void setReferencia(String referencia) {
+		this.referencia = referencia;
 	}
 
 	@Override

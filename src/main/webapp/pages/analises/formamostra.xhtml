@@ -318,7 +318,7 @@
 				</h:panelGrid>
 			</p:fieldset>
 			<br />
-			<p:panel id="caracteristicasGerais"
+			<p:panel id="caracteristicasGerais"  rendered="false"
 				style="background:none;border:none;">
 
 				<p:fieldset id="caracteristicas"
@@ -481,10 +481,12 @@
 							<p:cellEditor>
 								<f:facet name="output">
 									<h:outputText value="#{resultado.toleranciaIndicativa}" />
+									<h:outputText value="#{resultado.unidadeMedida}"  />
 								</f:facet>
 								<f:facet name="input">
 									<h:inputText value="#{resultado.toleranciaIndicativa}"
-										disabled="#{!SessaoDoUsuario.analisar}" style="width:100%" />
+										disabled="#{!SessaoDoUsuario.analisar}" style="width:50%" />
+									<h:outputText value="#{resultado.unidadeMedida}" style="width:50%" />
 								</f:facet>
 							</p:cellEditor>
 						</p:column>
@@ -493,7 +495,7 @@
 						<p:column headerText="Referência">
 							<p:cellEditor>
 								<f:facet name="output">
-									<h:outputText value="#{resultado.limiteTolerancia}" />
+									<h:outputText value="#{resultado.microrganismo.descricao}" />
 								</f:facet>
 
 								<f:facet name="input">

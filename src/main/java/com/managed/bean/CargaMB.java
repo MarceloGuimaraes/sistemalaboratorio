@@ -400,8 +400,8 @@ public class CargaMB extends BaseMB implements Serializable {
 
 			//** Correcao do ENCODING do arquivo de carga de alimentos para UTF-8.
 			//br = new BufferedReader(new InputStreamReader(resource.openStream()));
-			//br = new BufferedReader(new InputStreamReader(resource.openStream(), "UTF-8"));
-			br = new BufferedReader(new InputStreamReader(resource.openStream(), "ISO-8859-1"));
+			br = new BufferedReader(new InputStreamReader(resource.openStream(), "UTF-8"));
+			//br = new BufferedReader(new InputStreamReader(resource.openStream(), "ISO-8859-1"));
 
 
 			line = br.readLine();
@@ -424,8 +424,8 @@ public class CargaMB extends BaseMB implements Serializable {
 
 				//Insere o Grupo de alimentos
 				Grupo grupo = new Grupo();
-				grupo.setNome(registro[1]);
-				grupo.setDescricao(registro[2]);
+				grupo.setNome(registro[0]);
+				grupo.setDescricao(registro[1]);
 
 				if(!grupoS.isExiste(grupo)){
 					grupoS.add(grupo);
@@ -436,8 +436,8 @@ public class CargaMB extends BaseMB implements Serializable {
 				//Insere o Alimento
 				ItemGrupo itemGrupo = new ItemGrupo();
 				itemGrupo.setGrupo(grupo);
-				itemGrupo.setNome(registro[4]);
-				itemGrupo.setDescricao(registro[6]);
+				itemGrupo.setNome(registro[2]);
+				itemGrupo.setDescricao(registro[3]);
 
 				if(!itemGrupoS.isExiste(itemGrupo)) {
 					itemGrupoS.add(itemGrupo);
@@ -445,17 +445,16 @@ public class CargaMB extends BaseMB implements Serializable {
 
 				itemGrupo = itemGrupoS.getByNomeIdGrupo(itemGrupo);
 
-				strPadrao = registro[5];
+				strPadrao = registro[2];
 
 				//Loop de Microrganismos
-				while (line != null && strPadrao.equalsIgnoreCase(registro[5])) {
+				while (line != null && strPadrao.equalsIgnoreCase(registro[2])) {
 
 					//Insere o Microrganismo
-					System.out.println("MICRORGANISMO: " + registro[7]);
+					System.out.println("MICRORGANISMO: " + registro[4]);
 					Microrganismo microrganismo = new Microrganismo();
 					microrganismo.setAtivo(true);
-					microrganismo.setDescricao(registro[7]);
-					microrganismo.setNome(registro[7]);
+					microrganismo.setNome(registro[4].trim());
 
 					if (!microrganismoS.isExiste(microrganismo)){
 						microrganismoS.add(microrganismo);
@@ -465,26 +464,24 @@ public class CargaMB extends BaseMB implements Serializable {
 					microrganismo = ml.isEmpty() ? null : ml.get(0);
 
 					//Insere o itemPadrao
-					System.out.println("ITEM PADRAO: " + registro[8] + " / " + registro[9] + " / " + registro[10] + " / " + registro[11] + " / " + registro[12]);
+					System.out.println("ITEM PADRAO: " + registro[4] + " / " + registro[5] + " / " + registro[6] );
 					ItemPadrao itemPadrao = new ItemPadrao();
 					itemPadrao.setItemGrupo(itemGrupo);
 					itemPadrao.setMicrorganismo(microrganismo);
 					itemPadrao.setCodigoLegislacao(grupo.getNome() + itemGrupo.getNome());
 					itemPadrao.setPadrao(padrao);
 					itemPadrao.setTipoAnalise(TipoAnalise.ALIMENTO);
-					itemPadrao.setToleranciaIndicativa(registro[8]);
-					itemPadrao.setToleranciaRepresentivaN(registro[9]);
-					itemPadrao.setToleranciaRepresentivaC(registro[10]);
-					itemPadrao.setToleranciaLimInf(registro[11]);
-					itemPadrao.setToleranciaLimSup(registro[12]);
-					itemPadrao.setLimiteTolerancia(registro[13]);
 
-					String tx_unid_medida =" "+ Messages.getBundleMessage("carga.unidade_medida")+" ";
-					if(registro[14].contains("?")){
-						itemPadrao.setUnidadeMedida( registro[8].substring(registro[8].length()-3, registro[8].length()-1) + tx_unid_medida + registro[8].substring(registro[8].length()-1) );
-					}else{
-						itemPadrao.setUnidadeMedida(registro[14]);
-					}
+					itemPadrao.setUnidadeMedida(registro[5]);
+					itemPadrao.setReferencia(registro[6]);
+
+
+//					String tx_unid_medida =" "+ Messages.getBundleMessage("carga.unidade_medida")+" ";
+//					if(registro[14].contains("?")){
+//						itemPadrao.setUnidadeMedida( registro[8].substring(registro[8].length()-3, registro[8].length()-1) + tx_unid_medida + registro[8].substring(registro[8].length()-1) );
+//					}else{
+//						itemPadrao.setUnidadeMedida(registro[14]);
+//					}
 
 					itemPadraoS.add(itemPadrao);
 
@@ -512,6 +509,7 @@ public class CargaMB extends BaseMB implements Serializable {
 
 		} catch (Exception e) {
 			System.out.println("ERROR: " + e.getMessage());
+			e.printStackTrace();
 			Messages.addInfoTextMessage("ERRO na importação da tabela de alimentos e microrganismos -->" + e.getMessage());
 		}
 

@@ -1,13 +1,9 @@
 package com.model;
 
 import java.io.Serializable;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "microrganismo")
@@ -23,11 +19,19 @@ public class Microrganismo implements Serializable, ILoggable {
 	@Column(name = "nome", unique = true, nullable = false, length = 100)
 	private String nome;
 
-	@Column(name = "descricao")
-	private String descricao;
-
 	@Column(name = "ativo")
 	private Boolean ativo = true;
+
+	public List<ItemPadrao> getItensPadrao() {
+		return itensPadrao;
+	}
+
+	public void setItensPadrao(List<ItemPadrao> itensPadrao) {
+		this.itensPadrao = itensPadrao;
+	}
+
+	@OneToMany(mappedBy = "microrganismo", targetEntity = ItemPadrao.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<ItemPadrao> itensPadrao;
 
 	public Microrganismo() {
 	}
@@ -46,14 +50,6 @@ public class Microrganismo implements Serializable, ILoggable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
 	}
 
 	public Boolean getAtivo() {
